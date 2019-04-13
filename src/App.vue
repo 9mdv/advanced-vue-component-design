@@ -14,6 +14,10 @@
           ></date-picker>
         </label>
       </div>
+      <div class="min-h-screen flex items-center justify-center">
+        <button @click="modalOpen = true" type="button" class="btn btn-blue">Open Modal</button>
+      </div>
+      <announcement-modal :show="modalOpen" @close="modalOpen = false"></announcement-modal>
     </div>
   </div>
 </template>
@@ -21,16 +25,19 @@
 <script>
 import UserSettingsForm from './components/UserSettingsForm.vue'
 import DatePicker from './components/DatePicker.vue'
+import AnnouncementModal from './components/AnnouncementModal.vue'
 
 export default {
   data() {
     return {
       date: null,
+      modalOpen: false,
     }
   },
   components: {
     UserSettingsForm,
     DatePicker,
+    AnnouncementModal,
   },
 }
 </script>
