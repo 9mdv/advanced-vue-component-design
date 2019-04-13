@@ -24,7 +24,7 @@
         class="mb-6"
       >There were a king with a large jaw and a queen with a plain face, on the throne of England; there were a king with a large jaw and a queen with a fair face, on the throne of France. In both countries it was clearer than crystal to the lords of the State preserves of loaves and fishes, that things in general were settled for ever.</p>
       <div class="p-8 mb-4 text-center">
-        <button @click="modalOpen = true" type="button" class="btn btn-blue">Open Modal</button>
+        <button @click="showAnnouncement = true" type="button" class="btn btn-blue">Open Modal</button>
       </div>
       <p
         class="mb-6"
@@ -33,9 +33,7 @@
         class="mb-6"
       >France, less favoured on the whole as to matters spiritual than her sister of the shield and trident, rolled with exceeding smoothness down hill, making paper money and spending it. Under the guidance of her Christian pastors, she entertained herself, besides, with such humane achievements as sentencing a youth to have his hands cut off, his tongue torn out with pincers, and his body burned alive, because he had not kneeled down in the rain to do honour to a dirty procession of monks which passed within his view, at a distance of some fifty or sixty yards. It is likely enough that, rooted in the woods of France and Norway, there were growing trees, when that sufferer was put to death, already marked by the Woodman, Fate, to come down and be sawn into boards, to make a certain movable framework with a sack and a knife in it, terrible in history. It is likely enough that in the rough outhouses of some tillers of the heavy lands adjacent to Paris, there were sheltered from the weather that very day, rude carts, bespattered with rustic mire, snuffed about by pigs, and roosted in by poultry, which the Farmer, Death, had already set apart to be his tumbrils of the Revolution. But that Woodman and that Farmer, though they work unceasingly, work silently, and no one heard them as they went about with muffled tread: the rather, forasmuch as to entertain any suspicion that they were awake, was to be atheistical and traitorous.</p>
     </div>
-    <portal to="modals" v-if="showAnnouncement">
-      <announcement-modal :show="modalOpen" @close="modalOpen = false"></announcement-modal>
-    </portal>
+    <announcement-modal :show="showAnnouncement" @close="showAnnouncement = false"></announcement-modal>
     <portal-target name="modals"></portal-target>
 
     <!-- Slots -->
@@ -94,7 +92,6 @@ export default {
   data() {
     return {
       date: null,
-      modalOpen: false,
       accountId: 7,
       showAnnouncement: true,
     }

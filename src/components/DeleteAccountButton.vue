@@ -1,9 +1,7 @@
 <template>
   <button type="button" @click="modalOpen = true">
     <slot></slot>
-    <portal to="modals" v-if="modalOpen">
-      <confirm-delete-modal :show="modalOpen" @close="modalOpen = false" :account-id="accountId"/>
-    </portal>
+    <confirm-delete-modal :show="modalOpen" @close="modalOpen = false" :account-id="accountId"/>
   </button>
 </template>
 
