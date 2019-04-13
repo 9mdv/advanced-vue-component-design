@@ -78,6 +78,14 @@
       </media-card>
     </div>
     <!-- End slots -->
+
+    <!-- Contact list -->
+    <div class="max-w-sm mx-auto">
+      <contact-list :pseudo-slot="({ contact }) => contact.name.first">
+        <a slot-scope="{ contact }" :href="`/contacts/${contact.id}`">{{ contact.name.first }}</a>
+      </contact-list>
+    </div>
+    <!-- End contact list -->
   </div>
 </template>
 
@@ -87,6 +95,7 @@ import DatePicker from './components/DatePicker.vue'
 import AnnouncementModal from './components/AnnouncementModal.vue'
 import PrimaryButton from './components/PrimaryButton.vue'
 import MediaCard from './components/MediaCard.vue'
+import ContactList from './components/ContactList.vue'
 
 export default {
   data() {
@@ -102,6 +111,7 @@ export default {
     AnnouncementModal,
     PrimaryButton,
     MediaCard,
+    ContactList,
   },
 }
 </script>
