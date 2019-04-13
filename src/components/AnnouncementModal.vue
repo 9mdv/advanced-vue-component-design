@@ -38,14 +38,15 @@ export default {
     },
   },
   created() {
-    const escapeHandler = e => {
-      if (e.key === 'Escape' && this.show) {
+    const listener = document.addEventListener('keydown', e => {
+      if (this.show && e.keyCode === 27) {
         this.dismiss()
       }
-    }
-    document.addEventListener('keydown', escapeHandler)
-    this.$once('hook:destroyed', () => {
-      document.removeEventListener('keydown', escapeHandler)
+    })
+
+    this.$once('hook:beforeDestroy', () => {
+      console.log('removing listener')
+      document.removeEventListener('keydown', listener)
     })
   },
 }

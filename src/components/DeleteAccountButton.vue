@@ -2,15 +2,11 @@
   <button
     type="button"
     class="text-red-dark hover:underline"
-    @click="confirmDeleteModalOpen = true"
+    @click="modalOpen = true"
   >
     Delete Account
-    <portal to="modals">
-      <confirm-delete-modal
-        :show="confirmDeleteModalOpen"
-        @close="confirmDeleteModalOpen = false"
-        :account-id="accountId"
-      />
+    <portal to="modals" v-if="modalOpen">
+      <confirm-delete-modal :show="modalOpen" @close="modalOpen = false" :account-id="accountId"/>
     </portal>
   </button>
 </template>
@@ -25,7 +21,7 @@ export default {
   props: ['accountId'],
   data() {
     return {
-      confirmDeleteModalOpen: false,
+      modalOpen: false,
     }
   },
 }
