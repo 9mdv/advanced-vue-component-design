@@ -14,7 +14,29 @@
 
 <script>
 export default {
-  props: ['show'],
+  props: {
+    show: { required: true },
+    preventBackgroundScrolling: { default: true },
+  },
+  methods: {
+    dismiss() {
+      this.$emit('close')
+    },
+  },
+  watch: {
+    show: {
+      immediate: true,
+      handler: function(show) {
+        if (show) {
+          this.preventBackgroundScrolling &&
+            document.body.style.setProperty('overflow', 'hidden')
+        } else {
+          this.preventBackgroundScrolling &&
+            document.body.style.removeProperty('overflow')
+        }
+      },
+    },
+  },
   created() {
     const escapeHandler = e => {
       if (e.key === 'Escape' && this.show) {
@@ -25,11 +47,6 @@ export default {
     this.$once('hook:destroyed', () => {
       document.removeEventListener('keydown', escapeHandler)
     })
-  },
-  methods: {
-    dismiss() {
-      this.$emit('close')
-    },
   },
 }
 </script>
