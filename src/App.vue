@@ -88,7 +88,7 @@
     <!-- End contact list -->
 
     <div class="text-center p-8 my-8">
-      <hello-world tag="button"></hello-world>
+      <hello-world></hello-world>
     </div>
 
   </div>

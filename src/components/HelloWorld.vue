@@ -1,22 +1,22 @@
 <script>
+import PrimaryButton from './PrimaryButton.vue'
+import ToggleInput from './ToggleInput.vue'
+
 export default {
-  props: ['tag'],
   data() {
-    return {}
+    return {
+      toggled: true,
+    }
   },
   render(createElement) {
-    return createElement(
-      this.tag,
-      {
-        attrs: {
-          class: 'btn btn-blue',
-        },
-        on: {
-          click: () => alert('Clicked!'),
-        },
+    return createElement(ToggleInput, {
+      props: {
+        toggled: this.toggled,
       },
-      'Hello world!',
-    )
+      on: {
+        toggle: newValue => (this.toggled = newValue),
+      },
+    })
   },
 }
 </script>
