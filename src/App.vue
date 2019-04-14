@@ -112,6 +112,28 @@
         <h1 slot-scope="{ subject }">Hello {{ subject }}!</h1>
       </hello-world>
     </div>
+
+    <!-- Tag input -->
+    <div class="max-w-sm mx-auto card mt-8">
+      <label class="form-label mb-2">Original Tag Input</label>
+      <tag-input v-model="tags"></tag-input>
+    </div>
+    <!-- End tag input -->
+
+    <!-- Renderless tag input -->
+    <div class="max-w-sm mx-auto card mt-8">
+      <label class="form-label mb-2">Renderless Tag Input</label>
+      <renderless-tag-input>
+        <div class="tag-input" slot-scope="{}">
+          <span class="tag-input-tag">
+            <span>sample tag</span>
+            <button type="button" class="tag-input-remove">&times;</button>
+          </span>
+          <input class="tag-input-text" placeholder="Add tag...">
+        </div>
+      </renderless-tag-input>
+    </div>
+    <!-- End renderless tag input -->
   </div>
 </template>
 
@@ -124,6 +146,8 @@ import MediaCard from './components/MediaCard.vue'
 import ContactList from './components/ContactList.vue'
 import FetchJson from './components/FetchJson.vue'
 import HelloWorld from './components/HelloWorld.vue'
+import TagInput from './components/TagInput.vue'
+import RenderlessTagInput from './components/RenderlessTagInput.vue'
 
 export default {
   data() {
@@ -131,6 +155,7 @@ export default {
       date: null,
       accountId: 7,
       showAnnouncement: true,
+      tags: ['awesome', 'excellent', 'amazing'],
     }
   },
   components: {
@@ -142,6 +167,8 @@ export default {
     ContactList,
     FetchJson,
     HelloWorld,
+    TagInput,
+    RenderlessTagInput,
   },
 }
 </script>
