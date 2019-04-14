@@ -88,9 +88,10 @@
     <!-- End contact list -->
 
     <div class="text-center p-8 my-8">
-      <hello-world></hello-world>
+      <hello-world>
+        <h1 slot-scope="{ subject }">Hello {{ subject }}!</h1>
+      </hello-world>
     </div>
-
   </div>
 </template>
 
