@@ -86,6 +86,11 @@
       </contact-list>
     </div>
     <!-- End contact list -->
+
+    <div class="text-center p-8 my-8">
+      <hello-world tag="button"></hello-world>
+    </div>
+
   </div>
 </template>
 
@@ -96,6 +101,7 @@ import AnnouncementModal from './components/AnnouncementModal.vue'
 import PrimaryButton from './components/PrimaryButton.vue'
 import MediaCard from './components/MediaCard.vue'
 import ContactList from './components/ContactList.vue'
+import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   data() {
@@ -112,6 +118,7 @@ export default {
     PrimaryButton,
     MediaCard,
     ContactList,
+    HelloWorld,
   },
 }
 </script>
