@@ -81,11 +81,31 @@
 
     <!-- Contact list -->
     <div class="max-w-sm mx-auto">
-      <contact-list :pseudo-slot="({ contact }) => contact.name.first">
-        <a slot-scope="{ contact }" :href="`/contacts/${contact.id}`">{{ contact.name.first }}</a>
-      </contact-list>
+      <fetch-json url="../static/contacts.json" class="mb-8">
+        <contact-list slot-scope="{ response: contacts }" :contacts="contacts"></contact-list>
+      </fetch-json>
     </div>
     <!-- End contact list -->
+
+    <!-- Death metal  albums -->
+    <div class="max-w-sm mx-auto">
+      <fetch-json url="../static/albums.json">
+        <div class="card" slot-scope="{ response: albums, loading }">
+          <h1 class="text-2xl font-bold mb-6">Top Death Metal Albums</h1>
+          <div v-if="loading" class="text-grey-darker">Loading...</div>
+          <div v-else>
+            <div class="album-grid">
+              <div class="album-grid-item" v-for="album in albums" :key="album.id">
+                <img :src="`/static${album.artwork}`">
+                <h2 class="album-title">{{ album.title }}</h2>
+                <p class="album-artist">{{ album.artist }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fetch-json>
+    </div>
+    <!-- End death metal albums -->
 
     <div class="text-center p-8 my-8">
       <hello-world>
@@ -102,6 +122,7 @@ import AnnouncementModal from './components/AnnouncementModal.vue'
 import PrimaryButton from './components/PrimaryButton.vue'
 import MediaCard from './components/MediaCard.vue'
 import ContactList from './components/ContactList.vue'
+import FetchJson from './components/FetchJson.vue'
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
@@ -119,6 +140,7 @@ export default {
     PrimaryButton,
     MediaCard,
     ContactList,
+    FetchJson,
     HelloWorld,
   },
 }
