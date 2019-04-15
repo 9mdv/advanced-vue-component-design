@@ -129,6 +129,17 @@
       <label class="form-label mb-2">Inline Tag Input</label>
       <inline-tag-input v-model="tags"></inline-tag-input>
     </div>
+
+    <div
+      style="width: 420px"
+      class="mx-auto border-l border-r border-dashed border-grey-dark py-4 mb-4 mt-8"
+    >
+      <profile-card></profile-card>
+    </div>
+
+    <div style="width: 300px" class="border-l border-r border-dashed border-grey-dark py-4 mx-auto mt-8">
+      <profile-card></profile-card>
+    </div>
   </div>
 </template>
 
@@ -145,6 +156,8 @@ import TagInput from './components/TagInput.vue'
 import RenderlessTagInput from './components/RenderlessTagInput.vue'
 import StackedTagInput from './components/StackedTagInput.vue'
 import InlineTagInput from './components/InlineTagInput.vue'
+import WithDimensions from './components/WithDimensions.vue'
+import ProfileCard from './components/ProfileCard.vue'
 
 export default {
   data() {
@@ -168,6 +181,8 @@ export default {
     RenderlessTagInput,
     StackedTagInput,
     InlineTagInput,
+    WithDimensions,
+    ProfileCard,
   },
 }
 </script>
