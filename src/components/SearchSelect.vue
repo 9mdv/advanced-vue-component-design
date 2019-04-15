@@ -5,7 +5,7 @@
         <span v-if="value !== null">{{ value }}</span>
         <span v-else class="search-select-placeholder">Select a band...</span>
       </button>
-      <div v-show="isOpen" class="search-select-dropdown">
+      <div ref="dropdown" v-show="isOpen" class="search-select-dropdown">
         <input
           class="search-select-search"
           v-model="search"
@@ -36,6 +36,7 @@
 
 <script>
 import OnClickOutside from './OnClickOutside.vue'
+import Popper from 'popper.js'
 
 export default {
   components: {
@@ -49,6 +50,9 @@ export default {
       highlightedIndex: 0,
     }
   },
+  beforeDestroy() {
+    this.popper.destroy()
+  },
   computed: {
     filteredOptions() {
       return this.filterFunction(this.search, this.options)
@@ -61,9 +65,19 @@ export default {
       }
       this.isOpen = true
       this.$nextTick(() => {
+        this.setupPopper()
         this.$refs.search.focus()
         this.scrollToHighlighted()
       })
+    },
+    setupPopper() {
+      if (this.popper === undefined) {
+        this.popper = new Popper(this.$refs.button, this.$refs.dropdown, {
+          placement: 'bottom',
+        })
+      } else {
+        this.popper.scheduleUpdate()
+      }
     },
     close() {
       if (!this.isOpen) {
