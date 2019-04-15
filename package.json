@@ -13,6 +13,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@shopify/draggable": "^1.0.0-beta.8",
     "element-resize-detector": "^1.1.15",
     "pikaday": "^1.8.0",
     "portal-vue": "^2.0.1",
