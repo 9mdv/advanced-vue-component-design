@@ -5,16 +5,19 @@
       <span v-else class="search-select-placeholder">Select a band...</span>
     </button>
     <div v-show="isOpen" class="search-select-dropdown">
-      <input class="search-select-search">
-      <ul class="search-select-options">
+      <input class="search-select-search" v-model="search">
+      <ul v-show="filteredOptions.length > 0" class="search-select-options">
         <li
           class="search-select-option"
-          v-for="option in options"
+          v-for="option in filteredOptions"
           :key="option"
           @click="select(option)"
         >{{ option }}</li>
       </ul>
-      <!-- <div class="search-select-empty">No results found</div> -->
+      <div
+        v-show="filteredOptions.length === 0"
+        class="search-select-empty"
+      >No results found for "{{ search }}"</div>
     </div>
   </div>
 </template>
@@ -25,6 +28,7 @@ export default {
     return {
       isOpen: false,
       value: null,
+      search: '',
       options: [
         'Anthrax',
         'Dark Angel',
@@ -42,6 +46,13 @@ export default {
       ],
     }
   },
+  computed: {
+    filteredOptions() {
+      return this.options.filter(option =>
+        option.toLowerCase().startsWith(this.search.toLowerCase()),
+      )
+    },
+  },
   methods: {
     open() {
       this.isOpen = true
@@ -51,6 +62,7 @@ export default {
     },
     select(option) {
       this.value = option
+      this.search = ''
       this.close()
     },
   },
