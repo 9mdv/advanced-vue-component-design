@@ -205,6 +205,18 @@
       </div>
     </div>
     <!-- End sortable list -->
+
+    <!-- Search select -->
+    <div class="max-w-sm mx-auto bg-white rounded shadow-lg p-8 mt-8">
+      <div class="mb-4">
+        <label class="form-label mb-2">Favorite Thrash Band</label>
+        <search-select></search-select>
+      </div>
+      <div class="text-right">
+        <button type="button" class="btn btn-blue">Save Changes</button>
+      </div>
+    </div>
+    <!-- End search select -->
   </div>
 </template>
 
@@ -228,6 +240,7 @@ import AccordionItem from './components/AccordionItem.vue'
 import SortableList from './components/SortableList.vue'
 import SortableItem from './components/SortableItem.vue'
 import SortableHandle from './components/SortableHandle.vue'
+import SearchSelect from './components/SearchSelect.vue'
 
 export default {
   data() {
@@ -290,6 +303,7 @@ export default {
     SortableList,
     SortableItem,
     SortableHandle,
+    SearchSelect,
   },
 }
 </script>
