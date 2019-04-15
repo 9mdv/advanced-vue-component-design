@@ -142,6 +142,39 @@
       </renderless-tag-input>
     </div>
     <!-- End renderless tag input -->
+
+    <!-- Renderless Stacked Layout -->
+    <div class="max-w-sm mx-auto card mt-8">
+      <label class="form-label mb-2">Renderless Stacked Layout</label>
+
+      <renderless-tag-input v-model="tags">
+        <div
+          class="stacked-tag-input"
+          slot-scope="{ tags, addTag, removeButtonEvents, inputProps, inputEvents }"
+        >
+          <div class="stacked-tag-input-form">
+            <input
+              class="form-input"
+              placeholder="Add tag..."
+              v-bind="inputProps"
+              v-on="inputEvents"
+            >
+            <button class="btn btn-indigo" @click="addTag">Add Tag</button>
+          </div>
+          <ul class="stacked-tag-list">
+            <li v-for="tag in tags" :key="tag">
+              {{ tag }}
+              <button
+                type="button"
+                class="stacked-tag-link"
+                v-on="removeButtonEvents(tag)"
+              >Remove</button>
+            </li>
+          </ul>
+        </div>
+      </renderless-tag-input>
+    </div>
+    <!-- End Renderless Stacked Layout -->
   </div>
 </template>
 
