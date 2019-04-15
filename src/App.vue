@@ -210,7 +210,7 @@
     <div class="max-w-sm mx-auto bg-white rounded shadow-lg p-8 mt-8">
       <div class="mb-4">
         <label class="form-label mb-2">Favorite Thrash Band</label>
-        <search-select></search-select>
+        <search-select v-model="selectedBand" :options="bands" :filter-function="applySearchFilter"></search-select>
       </div>
       <div class="text-right">
         <button type="button" class="btn btn-blue">Save Changes</button>
@@ -281,7 +281,31 @@ export default {
           avatar: 'https://randomuser.me/api/portraits/med/men/4.jpg',
         },
       ],
+      selectedBand: null,
+      search: '',
+      bands: [
+        'Anthrax',
+        'Dark Angel',
+        'Death Angel',
+        'Destruction',
+        'Exodus',
+        'Flotsam and Jetsam',
+        'Kreator',
+        'Megadeth',
+        'Metallica',
+        'Overkill',
+        'Sepultura',
+        'Slayer',
+        'Testament',
+      ],
     }
+  },
+  methods: {
+    applySearchFilter(search, bands) {
+      return bands.filter(band =>
+        band.toLowerCase().startsWith(search.toLowerCase()),
+      )
+    },
   },
   components: {
     UserSettingsForm,
