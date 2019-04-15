@@ -1,11 +1,11 @@
 <template>
   <div class="search-select" :class="{ 'is-active': isOpen }">
-    <button @click="open" type="button" class="search-select-input">
+    <button ref="button" @click="open" type="button" class="search-select-input">
       <span v-if="value !== null">{{ value }}</span>
       <span v-else class="search-select-placeholder">Select a band...</span>
     </button>
     <div v-show="isOpen" class="search-select-dropdown">
-      <input class="search-select-search" v-model="search">
+      <input ref="search" class="search-select-search" v-model="search">
       <ul v-show="filteredOptions.length > 0" class="search-select-options">
         <li
           class="search-select-option"
@@ -56,9 +56,13 @@ export default {
   methods: {
     open() {
       this.isOpen = true
+      this.$nextTick(() => {
+        this.$refs.search.focus()
+      })
     },
     close() {
       this.isOpen = false
+      this.$refs.button.focus()
     },
     select(option) {
       this.value = option
